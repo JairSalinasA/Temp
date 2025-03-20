@@ -1,0 +1,695 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F4F6F9;  
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.barra0 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.barra0 .izq {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.barra0 .centro {
+    flex: 2;
+    text-align: center;
+}
+
+.barra0 .dere {
+    flex: 1;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Estilos del menú lateral */
+.sidenav {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 1050;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Cierra el sidenav */
+.closebtn {
+    font-size: 36px;
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    color: rgb(236, 4, 4);
+}
+
+/* Barra superior */
+#dvTop {
+    background-color: #343a40;
+    padding: 10px 0;
+    color: white;
+    position: relative;
+    z-index: 100;
+    width: 100%;
+    border-bottom: 3px solid var(--gold-line); /* Línea dorada en la parte superior */
+}
+
+#dvTop .navbar-brand img {
+    max-height: 50px;
+}
+
+#dvTop .navbar-toggler {
+    border: none;
+}
+
+/* Título centrado */
+#titulo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+ 
+
+:root {
+    --gold-line: #c4a875; /* Color dorado */
+ }
+
+ #dvPie {
+    background-color: #AB0033; /* Color de fondo del pie */
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    z-index: 100;
+    margin-top: auto;
+    border-top: 3px solid var(--gold-line); /* Línea dorada en la parte superior */
+ }
+
+/* Ajustar los iconos del menu lateral */
+.sidenav svg {
+    width: 30px;
+    height: 30px;
+    fill: #818181;
+}
+
+/* Cambiar el color del icono cuando se pasa el mouse */
+.sidenav a:hover svg {
+    fill: #12f78c;
+}
+
+/* Ajustar los iconos en el botón */
+#openNav {
+    display: none; 
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    padding: 8px 12px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#openNav span {
+    font-size: 16px;
+    line-height: 1;
+}
+
+#openNav svg {
+    width: 1em;
+    height: 1em;
+}
+
+#icoUsu {
+    width: 24px !important;
+    height: 24px !important;
+    stroke: #12f78c !important;
+}
+
+#hUsu {
+    display: none ; 
+    align-items: center;
+    justify-content: center;
+}
+
+.micon, .miconClose, .micon0, .svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Contenedor principal */
+#main {
+    background-color: #F4F6F9; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Cambiado a center para centrar verticalmente */
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    min-height: calc(100vh - 150px);
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1;
+}
+
+#mostrador {
+    background-color: white; /* Fondo blanco estilo tarjeta */
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    overflow: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Si tienes elementos dentro de mostrador que también necesitan centrarse */
+#mostrador > * {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cont_logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+#imgLogo {
+    max-width: 250px;
+    height: auto;
+    margin-right: -18px;
+}
+
+.brands {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Separador del sidebar */
+#sdSepara {
+    border-bottom-style: groove;
+    margin: 10px 0;
+}
+
+#submButon {
+    background-color: #AB0033; /* Cambia a tu color preferido */
+    color: white; /* Cambia el color del texto si es necesario */
+}
+
+#submButon:hover {
+    background-color: #c4a875;
+}
+
+
+/* Sidenav oculto por defecto */
+#mySidenav {
+    position: fixed;
+    left: -250px;
+    width: 200px;
+    height: 100%;
+    background-color: #343a40;
+    z-index: 1000;
+    transition: left 0.3s ease;
+    padding-top: 20px;
+  }
+  
+  #mySidenav.open {
+    left: 0;
+  }
+  
+  #mySidenav a {
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 12px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  #mySidenav a:hover {
+    color: #1c1c1c;
+  }
+  
+  /* Contenedor principal del menú lateral */
+#mySidenav {
+  position: fixed;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #343a40;
+  z-index: 1000;
+  transition: left 0.3s ease;
+  padding-top: 20px;
+  display: flex; /* Hacemos que el menú sea un flex container */
+  flex-direction: column; /* Los elementos se apilan verticalmente */
+}
+
+/* Menú abierto */
+#mySidenav.open {
+  left: 0;
+}
+
+/* Estilos para el logout button */
+.sidenav .logoutButton {
+  width: calc(100% - 10px); /* Ajusta el ancho */
+  padding: 10px 5px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  background-color: #ab0033;
+  color: #eeeeee;
+  border: none;
+  border-radius: 5px;
+  position: absolute; /* Posiciona el botón de forma absoluta */
+  bottom: 10px; /* Lo coloca en la parte inferior */
+  left: 5px; /* Ajusta la posición horizontal */
+}
+
+.sidenav .logoutButton:hover {
+  background-color: #ddc9a3;
+  transform: translateY(-2px);
+  color: #1c1c1c;
+}
+
+.sidenav .logoutButton svg {
+  width: 20px;
+  height: 20px;
+  fill: #eeeeee;
+}
+  /* Estilos de la barra lateral */
+  .sidenav {
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    color: #eeeeee;
+    background-color: #1c1c1c;
+    overflow-x: hidden;
+    transition: width 0.5s ease-in-out;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  .sidenav .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 6px;
+    height: 100%;
+  }
+  
+  .sidenav .top {
+    flex: 1;
+  }
+  
+  .sidenav .closeBtn {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 30px;
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+  }
+  .sidenav .closeBtn:hover {
+    color: #ab0033;
+  }
+  
+  .sidenav .user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 10px;
+    border-bottom: 1px solid #ddc9a3;
+    margin-bottom: 20px;
+    background-color: #ab0033;
+    color: white;
+    font-size: 12px;
+  }
+  
+  /* Menú de items en el sidenav */
+  .sidenav .itemsMenu {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: #eeeeee;
+  }
+  
+  .sidenav .itemsMenu div {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #54565a;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .sidenav .itemsMenu div:hover {
+    background-color: #ddc9a3;
+    color: #1c1c1c;
+  }
+  
+  .sidenav .itemsMenu div::before {
+    content: ">";
+    color: #eeeeee;
+    padding: 5px;
+    transition: color 0.3s ease;
+  }
+  
+  .sidenav .itemsMenu div:hover::before {
+    color: #1c1c1c;
+  }
+  
+  .sidenav .itemsMenu div a {
+    height: 100%;
+    width: 100%;
+    padding: 10px 2px;
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  /* Solución para evitar transparencia no deseada */
+  .sidenav .itemsMenu div a:hover {
+    background-color: transparent;
+    color: inherit;
+  }
+  
+
+  
+#submButon {
+    background-color: #AB0033; /* Cambia a tu color preferido */
+    color: white; /* Cambia el color del texto si es necesario */
+}
+
+#submButon:hover {
+    background-color: #c4a875;
+}
+
+
+#menuBtn {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  /* Tooltip oculto inicialmente */
+  #menuBtn::after {
+    content: "Abrir menú";
+    position: absolute;
+    bottom: 80%; /* Ajuste para bajar el tooltip */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+    white-space: nowrap;
+    font-size: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
+  }
+  
+  /* Flecha del tooltip */
+  #menuBtn::before {
+    content: "";
+    position: absolute;
+    bottom: 75%; /* Ajuste para la flecha */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
+  }
+  
+  /* Mostrar el tooltip al pasar el mouse */
+  #menuBtn:hover::after,
+  #menuBtn:hover::before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+ /* Menú de items en el sidenav */
+.sidenav .itemsMenu {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #eeeeee;
+}
+
+.sidenav .itemsMenu div {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #54565a;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidenav .itemsMenu div:hover {
+  background-color: #ddc9a3;
+  color: #1c1c1c;
+}
+
+.sidenav .itemsMenu div::before {
+  content: ">";
+  color: #eeeeee;
+  padding: 5px;
+  transition: color 0.3s ease;
+}
+
+.sidenav .itemsMenu div:hover::before {
+  color: #1c1c1c;
+}
+
+.sidenav .itemsMenu div a {
+  height: 100%;
+  width: 100%;
+  padding: 10px 2px;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Solución para evitar transparencia no deseada */
+.sidenav .itemsMenu div a:hover {
+  background-color: transparent;
+  color: inherit;
+}
+
+/* Estilos del modal salir */
+#salesist-exitModal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+  transition: opacity 0.3s ease;
+}
+
+#salesist-exitModal .salesist-modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #bc955c;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#salesist-exitModal .salesist-modal-content h2 {
+  font-size: 1.5em;
+  margin: 0 0 10px;
+  color: #ab0033;
+  text-align: center;
+}
+
+#salesist-exitModal .salesist-modal-content p {
+  font-size: 1em;
+  color: #54565a;
+  text-align: center;
+}
+
+#salesist-exitModal .salesist-modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+#salesist-exitModal .modal-button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#salesist-exitModal .confirm-button {
+  background-color: #ab0033;
+  color: #fff;
+}
+
+#salesist-exitModal .confirm-button:hover {
+  background-color: #8d0027;
+}
+
+#salesist-exitModal .confirm-button:active {
+  transform: scale(0.98);
+}
+
+#salesist-exitModal .cancel-button {
+  background-color: #bc955c;
+  color: #fff;
+}
+
+#salesist-exitModal .cancel-button:hover {
+  background-color: #a87d4d;
+}
+
+#salesist-exitModal .cancel-button:active {
+  transform: scale(0.98);
+}
+.dvMenIn {
+  height: 3.6%;
+  border-top-width: 1px;
+  border-right-width: 1px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap:3px;
+  padding-right: 5px;
+}
+
+
+/* Estilo de la capa de superposición */
+.overlay {
+  position: fixed; /* Asegura que cubra toda la pantalla */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+  z-index: 999; /* Asegura que esté encima de cualquier cosa detrás */
+  pointer-events: none; /* Esto previene la interacción con el overlay */
+}
+
+/* Estilo para .dvCap (la tarjeta) */
+.dvCap {
+  top: 25%;
+  left: 25%;
+  position: absolute;
+  background-color:white;
+  width: fit-content;
+  border-style: outset;
+  border-color: ghostwhite;
+  z-index: 1000; /* Hace que .dvCap esté encima del overlay */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+
+/* Estilo común para los botones */
+.amenu {
+  display: inline-block;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+/* Estilo común para los botones */
+.amenu {
+  display: inline-block;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* Ícono de zoom-in */
+.amenu.zoom-in::before {
+  content: "\f00e"; /* Código de FontAwesome para 'fa-search-plus' */
+  font-family: 'Font Awesome 5 Free'; 
+  font-weight: 900; /* Necesario para íconos de peso fuerte */
+}
+
+/* Ícono de zoom-out */
+.amenu.zoom-out::before {
+  content: "\f010"; /* Código de FontAwesome para 'fa-search-minus' */
+  font-family: 'Font Awesome 5 Free'; 
+  font-weight: 900;
+}
+
+/* Ícono de cerrar */
+.amenu.close::before {
+  content: "\f00d"; /* Código de FontAwesome para 'fa-times' */
+  font-family: 'Font Awesome 5 Free'; 
+  font-weight: 900;
+}
+
+/* Efecto hover para los botones */
+.amenu:hover {
+  color: #007bff; /* Color al pasar el mouse */
+}

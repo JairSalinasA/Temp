@@ -1,0 +1,54 @@
+:root {
+  --pantone-207c: #9e1b32;
+  --pantone-465c: #c4a875;
+  --pantone-468c: #ddc9a3;
+  --pantone-coolGray-11c: #53565a;
+  --header-bg: var(--pantone-207c);
+  --row-hover: rgba(206, 200, 195, 0.5);
+}
+
+.divDatos {
+  font-size: 13px;
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tblData {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.tblData th {
+  position: sticky;
+  top: 0;
+  background: var(--header-bg);
+  color: white;
+  padding: 8px;
+  text-align: left;
+  border-bottom: 2px solid var(--pantone-coolGray-11c);
+}
+
+.tblData td {
+  padding: 8px;
+  border-bottom: 1px solid var(--pantone-468c);
+  transition: background 0.3s;
+}
+
+.tblData tr:hover {
+  background: var(--row-hover);
+}
+
+.regSele {
+  background: var(--pantone-coolGray-11c);
+  color: white;
+}
+
+.dvMenFilt {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px; /* Agrega un margen para separarlo de la tabla */
+}

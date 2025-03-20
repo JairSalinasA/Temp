@@ -1,0 +1,17 @@
+{
+   "ws": "wsShk",   
+   "rutaBk": "shkSrvWS",
+   "hostBk": "172.17.14.136:8080",
+   "hostBkIP": "172.17.14.136:8080",
+   "hostBkDev": "172.17.14.136:8080",
+   "hostBkLOC": "localhost:8080",
+   "Titulo":"SIIAGUB",
+   "_":" ---------------------------------------------------",
+   "archURL":"http://187.141.57.205:5000",
+   "_old_archURL":"http://localhost:3000",
+   "__archURL":"http://172.17.14.141:5000",
+   "icoR":"/img/awesome/duotone/user-tie.svg",
+   "gifW":"/img/gg.gif",
+   "icoNada":"/img/nada.svg",
+   "cusini":"comun.login.ini"
+}
