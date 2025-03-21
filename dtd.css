@@ -193,6 +193,7 @@ body {
 }
 
 #mostrador {
+    height: 500px;
     background-color: white; /* Fondo blanco estilo tarjeta */
     width: 100%;
     max-width: 100%;
@@ -426,16 +427,7 @@ body {
   }
   
 
-  
-#submButon {
-    background-color: #AB0033; /* Cambia a tu color preferido */
-    color: white; /* Cambia el color del texto si es necesario */
-}
-
-#submButon:hover {
-    background-color: #c4a875;
-}
-
+ 
 
 #menuBtn {
     position: relative;
@@ -637,8 +629,8 @@ body {
 
 /* Estilo para .dvCap (la tarjeta) */
 .dvCap {
-  top: 25%;
-  left: 25%;
+  top: 10%;
+  left: 32%;
   position: absolute;
   background-color:white;
   width: fit-content;
@@ -693,3 +685,45 @@ body {
 .amenu:hover {
   color: #007bff; /* Color al pasar el mouse */
 }
+
+ 
+ 
+.dvCap .dvInBar:has(.dvMenIn .amenu.zoom-in, .dvMenIn .amenu.zoom-out, .dvMenIn .amenu svg) {
+  background-color: #c4a875;
+}
+
+
+#submRol {
+  background-color: #AB0033; /* Cambia a tu color preferido */
+  color: white; /* Cambia el color del texto si es necesario */
+}
+
+#submRol:hover {
+  background-color: #c4a875;
+}
+
+/* Estilos para el contenedor */
+#shkMen .dvMenIn .aMenu .dvTitIn {
+  position: relative;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  display: inline-block;
+  background-color: #28a745;  /* Color de éxito de Bootstrap */
+  color: white;
+}
+
+/* Agregar el ícono de disquete usando CSS con la propiedad ::before */
+#shkMen .dvMenIn .aMenu .dvTitIn::before {
+  content: '\f0c7'; /* Código unicode para el ícono de disquete de Font Awesome */
+  font-family: 'Font Awesome 5 Free'; /* Especificar la fuente de Font Awesome */
+  font-weight: 900; /* Asegurar que el ícono sea el correcto (negrita) */
+  margin-right: 8px; /* Espacio entre el ícono y el texto */
+  font-size: 16px; /* Tamaño del ícono */
+}
+
+/* Cambiar el color del ícono si es necesario */
+#shkMen .dvMenIn .aMenu .dvTitIn::before {
+  color: white; /* Color del ícono */
+}
+ 

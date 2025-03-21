@@ -1,52 +1,72 @@
-// Función que intentará mover el filtro
-const intentarMoverFiltro = () => {
+// Variable para controlar la frecuencia de los mensajes de log
+let lastLogTime = 0;
+const LOG_INTERVAL = 5000; // Solo mostrar un mensaje cada 5 segundos
+
+const intentarMoverFiltro = (silencioso = false) => {
     let filtro = document.querySelector(".dvMenFilt");
     let tabla = document.querySelector("#tblDat");
 
     if (filtro && tabla) {
-        tabla.parentNode.insertBefore(filtro, tabla);
-        console.log("Filtro movido arriba de la tabla");
-        return true; // Éxito
+        // Verificar si el filtro ya está en la posición correcta
+        if (filtro.nextElementSibling !== tabla) {
+            tabla.parentNode.insertBefore(filtro, tabla);
+            
+            // Solo registrar cuando se mueve realmente
+            console.log("Filtro movido arriba de la tabla");
+        }
+        return true; // Éxito - elementos encontrados
     } else {
-        console.log("No se encontró la tabla o el filtro, intentando de nuevo...");
+        // Solo mostrar mensajes de error ocasionalmente
+        if (!silencioso && Date.now() - lastLogTime > LOG_INTERVAL) {
+            console.log("No se encontró la tabla o el filtro, intentando de nuevo...");
+            lastLogTime = Date.now();
+        }
         return false; // No encontró los elementos
     }
 };
 
-// Función que usará un observador para detectar cambios en el DOM
 const configurarObservador = () => {
-    // Crear un observador que detecte cambios en el DOM
+    // Contador para limitar la frecuencia de comprobaciones
+    let checkCounter = 0;
+    
+    // Crear un observador que siempre esté activo
     const observer = new MutationObserver((mutations) => {
-        // Intentar mover el filtro
-        if (intentarMoverFiltro()) {
-            // Si tuvo éxito, desconectar el observador
-            observer.disconnect();
-        }
+        // Solo comprobar cada cierto número de mutaciones para reducir la carga
+        checkCounter++;
+        if (checkCounter % 10 !== 0) return; // Solo procesar 1 de cada 10 cambios
+        
+        // Intentar mover el filtro silenciosamente (sin log a menos que tenga éxito)
+        intentarMoverFiltro(true);
     });
 
-    // Configurar el observador para que observe todo el documento
+    // Configurar el observador para ver cambios en todo el documento
     observer.observe(document.body, {
         childList: true,
         subtree: true
     });
 
-    // También intentamos inmediatamente por si los elementos ya están presentes
-    if (intentarMoverFiltro()) {
-        observer.disconnect();
-    }
+    // Intentar inmediatamente por si los elementos ya están presentes
+    intentarMoverFiltro();
+    
+    // Devolver el observador para poder referenciarlo
+    return observer;
 };
 
-// Ejecutar cuando el DOM esté listo
+// Variable para almacenar el observador
+let filterObserver;
+
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', configurarObservador);
+    document.addEventListener('DOMContentLoaded', () => {
+        filterObserver = configurarObservador();
+    });
 } else {
-    configurarObservador();
+    filterObserver = configurarObservador();
 }
 
-// Como respaldo, también intentamos después de un tiempo
-setTimeout(() => {
-    intentarMoverFiltro();
-}, 2000);
+// Como respaldo, también intentamos periódicamente pero sin generar tantos logs
+setInterval(() => {
+    intentarMoverFiltro(true); // Modo silencioso
+}, 2000); // Revisar cada 2 segundos
 
 // window.fetchSV = function (icono, elemento) {
 //     elemento.innerText = elemento.getAttribute("title") || "Botón";
