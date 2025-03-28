@@ -1,58 +1,79 @@
 // Variable para controlar la frecuencia de los mensajes de log
-let lastLogTime = 0;
+let lastLogTime = 0; // Declarada en el ámbito global
 const LOG_INTERVAL = 5000; // Solo mostrar un mensaje cada 5 segundos
 
-const intentarMoverFiltro = (silencioso = false) => {
-    let filtro = document.querySelector(".dvMenFilt");
-    let tabla = document.querySelector("#tblDat");
+// Función para mover dvMen a dvBotonesTabla
+const moverDvMen = () => {
+    // Buscar el contenedor de dvMen
+    let dvMen = document.querySelector(".dvMen");
+    let dvBotonesTabla = document.querySelector("#dvBotonesTabla");
 
-    if (filtro && tabla) {
-        // Verificar si el filtro ya está en la posición correcta
-        if (filtro.nextElementSibling !== tabla) {
-            tabla.parentNode.insertBefore(filtro, tabla);
-            
-            // Solo registrar cuando se mueve realmente
-            console.log("Filtro movido arriba de la tabla");
+    // Si ambos elementos existen, mover dvMen al contenedor dvBotonesTabla
+    if (dvMen && dvBotonesTabla) {
+        // Verificar si dvMen ya está en la posición correcta
+        if (dvMen.parentNode !== dvBotonesTabla) {
+            dvBotonesTabla.appendChild(dvMen); // Mover dvMen a dvBotonesTabla
+            console.log("Elemento dvMen movido a dvBotonesTabla");
         }
         return true; // Éxito - elementos encontrados
     } else {
-        // Solo mostrar mensajes de error ocasionalmente
-        if (!silencioso && Date.now() - lastLogTime > LOG_INTERVAL) {
-            console.log("No se encontró la tabla o el filtro, intentando de nuevo...");
-            lastLogTime = Date.now();
+        // Si no se encuentran los elementos, mostrar un mensaje de error ocasionalmente
+        if (Date.now() - lastLogTime > LOG_INTERVAL) {
+            console.log("No se encontró dvMen o el contenedor dvBotonesTabla, intentando de nuevo...");
+            lastLogTime = Date.now(); // Actualizar el tiempo del último log
+        }
+        return false; // No encontró los elementos
+    }
+};
+
+// Función para mover dvMenFilt a dvFiltros
+const moverFiltros = () => {
+    // Buscar el contenedor de filtros
+    let filtro = document.querySelector(".dvMenFilt");
+    let dvFiltros = document.querySelector("#dvFiltros");
+
+    // Si ambos elementos existen, mover el filtro al contenedor dvFiltros
+    if (filtro && dvFiltros) {
+        // Verificar si el filtro ya está en la posición correcta
+        if (filtro.parentNode !== dvFiltros) {
+            dvFiltros.appendChild(filtro); // Mover el filtro a dvFiltros
+            console.log("Filtro movido a dvFiltros");
+        }
+        return true; // Éxito - elementos encontrados
+    } else {
+        // Si no se encuentran los elementos, mostrar un mensaje de error ocasionalmente
+        if (Date.now() - lastLogTime > LOG_INTERVAL) {
+            console.log("No se encontró el filtro o el contenedor dvFiltros, intentando de nuevo...");
+            lastLogTime = Date.now(); // Actualizar el tiempo del último log
         }
         return false; // No encontró los elementos
     }
 };
 
 const configurarObservador = () => {
-    // Contador para limitar la frecuencia de comprobaciones
     let checkCounter = 0;
-    
-    // Crear un observador que siempre esté activo
+
     const observer = new MutationObserver((mutations) => {
-        // Solo comprobar cada cierto número de mutaciones para reducir la carga
         checkCounter++;
         if (checkCounter % 10 !== 0) return; // Solo procesar 1 de cada 10 cambios
-        
-        // Intentar mover el filtro silenciosamente (sin log a menos que tenga éxito)
-        intentarMoverFiltro(true);
+
+        // Intentar mover dvMen y filtros silenciosamente (sin log a menos que tenga éxito)
+        moverDvMen();
+        moverFiltros();
     });
 
-    // Configurar el observador para ver cambios en todo el documento
     observer.observe(document.body, {
         childList: true,
         subtree: true
     });
 
-    // Intentar inmediatamente por si los elementos ya están presentes
-    intentarMoverFiltro();
-    
-    // Devolver el observador para poder referenciarlo
+    // Intentar mover dvMen y filtros inmediatamente por si ya están presentes
+    moverDvMen();
+    moverFiltros();
+
     return observer;
 };
 
-// Variable para almacenar el observador
 let filterObserver;
 
 if (document.readyState === 'loading') {
@@ -65,7 +86,8 @@ if (document.readyState === 'loading') {
 
 // Como respaldo, también intentamos periódicamente pero sin generar tantos logs
 setInterval(() => {
-    intentarMoverFiltro(true); // Modo silencioso
+    moverDvMen(); // Modo silencioso
+    moverFiltros(); // Modo silencioso
 }, 2000); // Revisar cada 2 segundos
 
 // window.fetchSV = function (icono, elemento) {
