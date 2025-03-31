@@ -102,12 +102,12 @@ if (JSdfr && JSdfr.hasOwnProperty("kEtq") && result)
 ctit = document.createElement("span");
 ctit.className = "dvTitIn";
 ctit.innerText = hKey;
+ctit.setAttribute("title",hKey);
 sp.appendChild(ctit);
 
 
 cmenwin = document.createElement("span");
 cmenwin.className = 'dvMenIn';
-//cmenwin.className = "dvTitIn";
 
 
 czoomax = document.createElement("span");

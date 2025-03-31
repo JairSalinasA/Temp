@@ -7,15 +7,15 @@ rol = JSdbk.rol;
 let sideMenu = document.querySelector("#itemsMenu");
 let nli;
 let jsICusos = JSON.parse(JSdbk.icusos);
-
 // Verificar si JSdbk.nomRol tiene un valor
 if (JSdbk.nomRol) {
-    // Mostrar el botón del menú
-    document.querySelector("#openNav").style.display = "block";
+   // Mostrar el botón del menú
+   document.querySelector("#openNav").style.display = "block";
 } else {
-    // Ocultar el botón del menú
-    document.querySelector("#openNav").style.display = "none";
+   // Ocultar el botón del menú
+   document.querySelector("#openNav").style.display = "none";
 }
+
 for (i = 0; i < jsICusos.datos.length; i++) {
    nli = document.createElement("div");
 
@@ -63,6 +63,7 @@ if (JSdbk.msjIni) {
    createModal(JSdbk.msjIni);
 }
 
+
 document.addEventListener("DOMContentLoaded", function() {
    // Función para abrir el menú lateral
    function openSideNav() {
@@ -99,8 +100,3 @@ document.addEventListener("DOMContentLoaded", function() {
        }
    });
 });
-
-
-
-
- 

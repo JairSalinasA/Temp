@@ -217,3 +217,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("Overlay inicializado y observando dvCap.");
 });
+// Simulación de carga asíncrona con un tiempo de espera
+setTimeout(function () {
+    const loaderWrapper = document.getElementById("loader-wrapper");
+    if (loaderWrapper) {
+      loaderWrapper.style.display = "none";
+    } else {
+      // console.error('Elemento de carga no encontrado en el DOM');
+    }
+  }, 1000); // Simulated time: 3 seconds
