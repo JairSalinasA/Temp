@@ -7,18 +7,35 @@
   --row-hover: rgba(206, 200, 195, 0.5);
 }
 
+/* .divDatos {
+  font-size: 13px;
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+} */
+
 .divDatos {
   font-size: 13px;
   padding: 10px;
   background: white;
   border-radius: 8px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  /* Nuevas propiedades para el scroll */
+  max-height: 500px; /* Ajusta esta altura según necesites */
+  overflow-x: auto;  /* Scroll horizontal si la tabla es ancha */
+  white-space: nowrap; /* Evita saltos de línea en celdas */
 }
 
-.tblData {
+/* .tblData {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
+} */
+
+.tblData {
+  width: 100%;
+  max-width: 100%; /* Evita que la tabla desborde */
 }
 
 .tblData th {
@@ -52,3 +69,5 @@
   align-items: center;
   margin-bottom: 10px; /* Agrega un margen para separarlo de la tabla */
 }
+
+

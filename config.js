@@ -226,3 +226,7 @@ setTimeout(function () {
       // console.error('Elemento de carga no encontrado en el DOM');
     }
   }, 1000); // Simulated time: 3 seconds
+
+
+
+  
